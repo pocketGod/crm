@@ -3,6 +3,6 @@
     padding: 1rem;
     height: calc(26vmin - 5px);
     background-color: #1ABC9C;
-    
+    min-height: 200px;
 }
 

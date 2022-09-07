@@ -50,3 +50,7 @@
 #mobileNavbar i, #desktopNavbar i {
     margin: 0 0.5rem 0 0;
 }
+
+.mobile-nav-logo img{
+    object-fit: contain;
+}
