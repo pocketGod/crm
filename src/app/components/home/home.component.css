@@ -1,0 +1,16 @@
+.big-main-btn{
+    font-size: 3rem;
+    font-weight: 100;
+}
+.bg-themed-active{
+    background-color: #1ABC9C;
+    color: white !important;
+    box-shadow: rgba(50, 50, 93, 0.15) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.15) 0px 18px 36px -18px inset;
+}
+
+.color-themed{
+    color: #1ABC9C;
+}
+#tab-login, #tab-register{
+    border: 3px solid #1ABC9C;
+}

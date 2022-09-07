@@ -1,0 +1,58 @@
+<div class="container p-3">
+    <div class="w-100 d-flex justify-content-between px-1 top-container-div">
+        <h4>Add Contact</h4>
+        <a (click)="closeModal()" class=""><i class="fa-regular fa-circle-xmark"></i></a>
+        </div>
+    <form #addContactForm="ngForm" (ngSubmit)="submitNewContact()">
+        <div class="form-group w-50 d-flex">
+            <label for="employed"></label>
+            <div>
+              <input id="employee" type="radio" value='employed' name="employed" [(ngModel)]="employed" required>
+              <label class="ms-2" for="employee">Employee</label>
+           </div>
+           <div class="ms-5">
+              <input id="customer" type="radio" value="customer" name="employed" [(ngModel)]="employed" required>
+              <label class="ms-2" for="customer">customer</label>
+           </div>
+        </div>
+        <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input type="text" class="form-control" id="fname" [(ngModel)]="name.first" #fname="ngModel" required name="fname" minlength="2">
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name:</label>
+            <input type="text" class="form-control" id="lname" [(ngModel)]="name.last" #lname="ngModel" required name="lname" minlength="2">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="contact.email" email #email="ngModel" required name="email" minlength="6">
+        </div>
+        <div class="form-group">
+            <label for="birthday">Birthday:</label>
+            <input type="date" class="form-control" id="birthday" [(ngModel)]="contact.birthday" #birthday="ngModel" required name="birthday">
+        </div>
+        <div>
+            <label for="phones">Phones:</label>
+            <div *ngIf="!phoneFields[0]">
+                <span class="text-muted">Add up to 3 Phone Numbers of your Contact</span>
+            </div>
+            <div class="form-group d-flex" *ngIf="phoneFields[0]">
+                <input type="string" class="form-control" id="phone1" [(ngModel)]="contact.phones[0]" #phone1="ngModel" required name="phone1" minlength="9">
+                <a *ngIf="!phoneFields[1] && phoneFields[0]" (click)="removePhoneField(0)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <div class="form-group d-flex" *ngIf="phoneFields[1]">
+                <input type="string" class="form-control" id="phone2" [(ngModel)]="contact.phones[1]" #phone2="ngModel" required name="phone2" minlength="9">
+                <a *ngIf="!phoneFields[2] && phoneFields[1]" (click)="removePhoneField(1)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <div class="form-group d-flex" *ngIf="phoneFields[2]">
+                <input type="string" class="form-control" id="phone3" [(ngModel)]="contact.phones[2]" #phone3="ngModel" required name="phone3" minlength="9">
+                <a (click)="removePhoneField(2)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <a *ngIf="!phoneFields[2]" (click)="addAnotherPhoneField()" class="btn btn-secondary w-100 my-2 text-light">Add Another Phone Field +</a>
+            <div *ngIf="phoneFields[2]">
+                <span class="text-muted">Up to 3 Phone records are allowed per contact</span>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit" [disabled]="addContactForm.invalid">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+label{
+    margin: 10px 0 0 0;
+}
+input{
+    margin: 0 0 5px 0;
+}
+.deletePhoneBtn{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.deletePhoneBtn > *{
+    font-size: 150%;
+}
+
+.top-container-div a{
+    cursor: pointer;
+    font-size: 130%;
+}

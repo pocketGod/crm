@@ -1,0 +1,27 @@
+<div class="container w-50">
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+          <form #loginForm="ngForm" (ngSubmit)="submitLogin()">
+            <div class="text-center mb-3 text-light bg-themed p-3 rounded sign-with-google-pill" (click)="loginWithGoogle()" >
+              <p>Sign in with: <i class="fab fa-google ms-3"></i></p>
+            </div>
+      
+            <p class="text-center">or:</p>
+
+            <div class="form-floating mb-4">
+              <input type="email" id="loginEmail" class="form-control" [(ngModel)]="user.email" email minlength="8" #email="ngModel" required name="loginEmail" placeholder="."/>
+              <label class="form-label" for="loginEmail">Email</label>
+            </div>
+      
+            <div class="form-floating mb-4">
+              <input type="password" id="loginPassword" class="form-control" [(ngModel)]="user.password" #password="ngModel" required name="loginPassword" placeholder="." minlength="6" pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=\S+$).{6,20}$"/>
+              <label class="form-label" for="loginPassword">Password</label>
+            </div>
+      
+      
+            <div class="w-100 d-flex justify-content-center">
+                <button type="submit" class="btn bg-themed btn-block mb-4 text-light" [disabled]="loginForm.invalid">Sign In</button>
+            </div>      
+          </form>
+        </div>
+</div>

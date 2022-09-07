@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "crm-system-ng": {
+      "hosting": {
+        "crm": [
+          "crm-system-ng"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crm-system-ng"
+  }
+}

@@ -1,0 +1,76 @@
+<div class="row w-100" id="navbarContainer">
+    <div class="col-md-12 col-lg-2" id="desktopNavbar">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+            <!-- <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+              <span class="fs-4">Sidebar</span>
+            </a>
+            <hr> -->
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a [routerLink]="['table']" [routerLinkActive]="['active']" class="nav-link link-dark">
+                 <i class="fa-solid fa-list-ul"></i> Customer Table
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['contacts']" [routerLinkActive]="['active']" class="nav-link link-dark">
+                 <i class="fa-regular fa-id-card"></i>Employee Contacts 
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['orders']" [routerLinkActive]="['active']" class="nav-link link-dark">
+                  <i class="fa-regular fa-credit-card"></i> Orders 
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+              <a class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img [src]="getUserPic()" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>{{getUsername()}}</strong>
+              </a>
+              <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" (click)="addContact()" >Add New Contact</a></li>
+                <li><a [routerLink]="['profile']" [routerLinkActive]="['active']" class="dropdown-item">My Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+    </div>
+    <div class="col-md-12 col-lg-2 px-3" id="mobileNavbar">
+      <div class="row p-4 bg-light text-dark">
+        <div class="col">
+          <a [routerLink]="['table']" [routerLinkActive]="['mobile-nav-item-active']" class="mobile-nav-item nav-link link-dark">
+            <i class="fa-solid fa-list-ul"></i> Customer Table
+          </a>
+        </div>
+        <div class="col">
+          <a [routerLink]="['contacts']" [routerLinkActive]="['mobile-nav-item-active']" class="mobile-nav-item nav-link link-dark">
+            <i class="fa-regular fa-id-card"></i> Employee Contacts
+          </a>
+        </div>
+        <div class="col">
+          <a [routerLink]="['orders']" [routerLinkActive]="['mobile-nav-item-active']" class="mobile-nav-item nav-link link-dark">
+            <i class="fa-regular fa-credit-card"></i> Orders 
+          </a>
+        </div>
+        <div class="col">
+          <div class="dropdown">
+            <a class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img [src]="getUserPic()" alt="" width="32" height="32" class="rounded-circle me-2">
+              <strong>{{getUsername()}}</strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
+              <li><a class="dropdown-item" (click)="addContact()">Add New Customer</a></li>
+              <li><a [routerLink]="['profile']" [routerLinkActive]="['active']" class="dropdown-item">My Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-10 search-container">
+        <router-outlet></router-outlet>
+    </div>
+</div>

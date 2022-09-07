@@ -1,0 +1,52 @@
+.fa-eye:hover{
+    color: #0D6EFD;
+    cursor: pointer;
+}
+.fa-pencil:hover{
+    color: #FFC107;
+    cursor: pointer;
+}
+.fa-trash:hover{
+    color: #DC3545;
+    cursor: pointer;
+}
+#searchContactsContainer{
+    height: calc(60vmin - 8px);
+    /* position: relative; */
+    overflow-y: scroll;
+}
+#mobileTable{
+    display: none;
+    visibility: hidden;
+}
+#desktopTable{
+    /* display: block; */
+    visibility: visible;
+}
+#phoneList{
+    list-style: none;
+}
+.single-contact-table{
+    border-radius: 15px;
+    padding: 0 0 0 15px;
+    margin: 0 0 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+.gentle-generic-shadow{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+@media only screen and (max-width: 989px){
+    #searchContactsContainer{
+    height: auto;
+    overflow: visible;
+    }
+    #mobileTable{
+        display: block;
+        visibility: visible;
+    }
+    #desktopTable{
+        display: none;
+        visibility: hidden;
+    }
+}

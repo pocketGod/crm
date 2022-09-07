@@ -1,0 +1,38 @@
+
+<div class="card text-center">
+    <div class="card-header">
+        <div class="w-100 d-flex justify-content-between px-1">
+            <span *ngIf="contact.employee; else customerCard" class="text-muted">Employee</span>
+            <ng-template #customerCard>
+                <span class="text-muted">Customer</span>
+            </ng-template>
+            <a (click)="closeModal()" class=""><i class="fa-regular fa-circle-xmark"></i></a>
+        </div>
+        <h1>{{contact.name}}</h1>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">
+            <i class="fa-solid fa-cake-candles"></i>
+            {{contact.birthday}}
+            <i class="fa-solid fa-cake-candles"></i>
+        </h5>
+        <div *ngIf="contact.phones.length; else noPhones">
+            <hr>
+            <p class="card-text" *ngFor="let phone of contact.phones">
+                <i class="fa-solid fa-phone-flip"></i>
+                {{phone}}
+                <i class="fa-solid fa-phone"></i>
+            </p>
+        </div>
+        <ng-template #noPhones>
+            <hr>
+            <span class="text-muted">
+                <i class="fa-solid fa-phone-slash"></i>
+                No Phones for this Contact
+            </span>
+        </ng-template>
+    </div>
+    <div class="card-footer text-muted">
+        <h1>{{contact.email}}</h1>
+    </div>
+  </div>

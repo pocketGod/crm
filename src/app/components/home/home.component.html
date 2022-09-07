@@ -1,0 +1,14 @@
+<div class="container">
+    <ul class="nav nav-pills nav-justified mb-3">
+        <li class="nav-item mx-2">
+          <a [routerLink]="['login']" [routerLinkActive]="['bg-themed-active']" class="color-themed nav-link py-5 big-main-btn" id="tab-login">Login</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a [routerLink]="['register']" [routerLinkActive]="['bg-themed-active']" class="color-themed nav-link py-5 big-main-btn" id="tab-register">Register</a>
+        </li>
+      </ul>
+</div>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+  

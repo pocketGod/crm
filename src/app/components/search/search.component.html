@@ -1,0 +1,118 @@
+<div class="row w-100">
+    <div class="col-12">
+      <div>
+        <h1 class="display-6 text-center">Customers</h1>
+      </div>
+      <div class="row p-3 mx-md-5">
+        <div class="form-floating col-3">
+          <input placeholder="." id="firstNameInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="contactFirstName">
+          <label for="firstNameInput" class="ms-1">First Name</label>
+        </div>
+        <div class="form-floating col-3">
+          <input placeholder="." id="lastNameInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="contactLastName">
+          <label for="lastNameInput" class="ms-1">Last Name</label>
+        </div>
+        <div class="form-floating col-3">
+            <input placeholder="." id="phoneInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="contactPhone">
+            <label for="phoneInput" class="ms-1">Phone</label>
+        </div>
+        <div class="col-3 d-flex align-items-center">
+          <span class="vr me-4"></span>
+          <button class="btn btn-secondary gentle-generic-shadow" (click)="addContact()">Add Contact</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" id="searchContactsContainer">
+      <div *ngIf="contacts | filter:'firstName':contactFirstName | filter:'lastName':contactLastName | filter:'phone':contactPhone | isEmployee:false as contacts" class="table-responsive-sm">
+        <ng-container *ngIf="contacts.length!=0; else noCustomersFound">
+          <table class="table table-striped" id="desktopTable">
+            <thead>
+              <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phones</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                {{resetTableIretator()}}
+              <tr *ngFor="let contact of contacts">
+                <td>{{tableIretatorIncremant()}}</td>
+                <td>{{getName(contact.name, 'first')}}</td>
+                <td>{{getName(contact.name, 'last')}}</td>
+                <td >{{contact.email}}</td>
+                <td>
+                    <ul *ngIf="contact.phones.length!=0; else noPhones">
+                        <li *ngFor="let phone of contact.phones">
+                            {{phone}}
+                        </li>
+                    </ul>
+                    <ng-template #noPhones>
+                      no phone
+                    </ng-template>
+                </td>
+                <td class="">
+                  <a (click)="showContact(contact)">
+                    <i class="fa-solid fa-eye"></i>
+                  </a>
+                  <br>
+                  <a (click)="updateContact(contact)">
+                    <i class="fa-solid fa-pencil"></i>
+                  </a>
+                  <br>
+                  <a (click)="deleteContact(contact)">
+                    <i class="fa-solid fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+            <div *ngFor="let contact of contacts" id="mobileTable" class="ps-3">
+              <table class="table table-striped single-contact-table">
+              <tr>
+                <th>Name</th>
+                <th class="ps-5">{{getName(contact.name, 'first')}} {{getName(contact.name, 'last')}}</th>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td class="ps-5">{{contact.email}}</td>
+              </tr>
+              <tr>
+                <td>
+                  Phones
+                </td>
+                <td class="ps-5">
+                  <ul id="phoneList" *ngIf="contact.phones.length!=0; else noPhones">
+                    <li *ngFor="let phone of contact.phones">
+                        {{phone}}
+                    </li>
+                  </ul>
+                  <ng-template #noPhones>
+                    no phone
+                  </ng-template>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="text-center">
+                  <a (click)="showContact(contact)">
+                    <i class="fa-solid fa-eye mx-3"></i>
+                  </a>
+                  <a (click)="updateContact(contact)">
+                    <i class="fa-solid fa-pencil mx-3"></i>
+                  </a>
+                  <a (click)="deleteContact(contact)">
+                    <i class="fa-solid fa-trash mx-3"></i>
+                  </a>
+                </td>
+              </tr>
+          </table>
+        </div>
+        </ng-container>
+      </div>
+      <ng-template #noCustomersFound>
+        <h1 class="px-5 pt-4">No Customers Found</h1>
+      </ng-template>
+    </div>
+  </div>

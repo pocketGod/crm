@@ -1,0 +1,7 @@
+.card-header a{
+    cursor: pointer;
+    font-size: 130%;
+}
+.card-body i{
+    margin: 0 15px;
+}

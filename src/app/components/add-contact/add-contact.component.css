@@ -1,0 +1,29 @@
+label{
+    margin: 10px 0 0 0;
+}
+input{
+    margin: 0 0 5px 0;
+}
+.deletePhoneBtn{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.deletePhoneBtn > *{
+    font-size: 150%;
+}
+.top-container-div a{
+    cursor: pointer;
+    font-size: 130%;
+}
+.ng-valid[required]{
+    border-left: 5px solid #1ABC9C;
+    border-right: 5px solid #1ABC9C;
+}
+.ng-invalid:not(form){
+    border-left: 5px solid #5C636A;
+    border-right: 5px solid #5C636A;
+}

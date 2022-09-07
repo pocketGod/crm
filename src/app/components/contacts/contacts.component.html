@@ -1,0 +1,63 @@
+<div class="contactContainer">
+  <div class="">
+    <div>
+      <h1 class="display-6 text-center">Employee Contact Details</h1>
+    </div>
+    <div class="row p-3 mx-md-5">
+      <div class="form-floating col-3">
+        <input placeholder="." id="firstNameInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="contactFirstName">
+        <label for="firstNameInput" class="ms-1">First Name</label>
+      </div>
+      <div class="form-floating col-3">
+        <input placeholder="." id="lastNameInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="contactLastName">
+        <label for="lastNameInput" class="ms-1">Last Name</label>
+      </div>
+      <div class="form-floating col-3">
+          <input placeholder="." id="phoneInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="contactPhone">
+          <label for="phoneInput" class="ms-1">Phone</label>
+      </div>
+      <div class="col-3 d-flex align-items-center">
+        <span class="vr me-4"></span>
+        <button class="btn btn-secondary gentle-generic-shadow" (click)="addContact()">Add Contact</button>
+      </div>
+    </div>
+  </div>
+    <div class="">
+      <div *ngIf="contacts | filter:'firstName':contactFirstName | filter:'lastName':contactLastName | filter:'phone':contactPhone | isEmployee:true as contacts" class="row px-4">
+        <ng-container *ngIf="contacts.length!=0; else noContactsFound">
+          <div class="card text-center col-12 col-sm-4 px-0 my-2 contact-card" (click)="showContact(contact)"  *ngFor="let contact of contacts">
+            <div class="card-header display-6">
+              {{contact.name}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{contact.email}}</h5>
+              <div *ngIf="contact.phones.length; else noPhones">
+                <!-- <p class="card-text" *ngFor="let phone of contact.phones">
+                  {{phone}}
+                </p> -->
+                <p *ngIf="contact.phones.length==1; else moreThanOnePhone">
+                  {{contact.phones.length}} Phone for this contact
+                </p>
+                <ng-template #moreThanOnePhone class="text-muted">
+                  {{contact.phones.length}} Phones for this contact
+                </ng-template>
+              </div>
+              <ng-template #noPhones>
+                <span class="text-muted">No Phones for this Contact</span>
+              </ng-template>
+            </div>
+            <div class="card-footer text-muted">
+              <i class="fa-solid fa-cake-candles me-2"></i>
+              {{getBirthday(contact.birthday)}}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-template #noContactsFound>
+      <h1>No Contacts Found</h1>
+    </ng-template>
+  </div>
+
+
+  
