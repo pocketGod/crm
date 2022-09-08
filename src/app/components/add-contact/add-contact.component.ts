@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Contact } from 'src/app/interfaces/Contact';
 import { ContactsService } from 'src/app/services/contacts.service';
 
@@ -19,7 +19,7 @@ export class AddContactComponent implements OnInit {
 
   employed:string = ''
 
-  constructor(private cs:ContactsService, private modal:NgbModal) { }
+  constructor(private cs:ContactsService, private modal:NgbModal, private activeModal:NgbActiveModal) { }
 
   ngOnInit(): void {
   }
@@ -58,7 +58,7 @@ export class AddContactComponent implements OnInit {
   }
 
   closeModal(){
-    this.modal.dismissAll()
+    this.activeModal.close()
   }
 
 }

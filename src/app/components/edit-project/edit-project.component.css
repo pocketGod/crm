@@ -1,0 +1,23 @@
+.deleteEmployeeBtn{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.deleteEmployeeBtn > *{
+    font-size: 150%;
+}
+.pitch-status{
+    background-color: red;
+}
+.pre-status{
+    background-color: orange;
+}
+.post-status{
+    background-color: yellow;
+}
+.done-status{
+    background-color: green;
+}

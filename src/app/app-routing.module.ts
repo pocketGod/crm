@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SearchComponent } from './components/search/search.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path:'table', component:SearchComponent},
     {path:'orders', component:OrdersComponent},
     {path:'profile', component:ProfileComponent},
+    {path:'projects', component:ProjectsComponent}
   ]},
   {path:'home', component:HomeComponent, canActivate:[PreventDoubleSignInGuard], children:[
     {path:'login', component:LoginComponent},

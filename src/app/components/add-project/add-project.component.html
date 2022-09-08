@@ -1,0 +1,56 @@
+<div class="container p-3">
+    <div class="w-100 d-flex justify-content-between px-1 top-container-div">
+        <h4>Add Project</h4>
+        <a (click)="closeModal()" class="x-mark-btn text-dark"><i class="fa-regular fa-circle-xmark"></i></a>
+        </div>
+    <form #addProjectForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="project.title" #title="ngModel" required name="title" minlength="2">
+        </div>
+        <div class="form-group">
+            <label for="client">Client</label>
+            <!-- <input type="text" class="form-control" id="client" [(ngModel)]="project.client" #client="ngModel" required name="client" minlength="2"> -->
+            <select name="client" id="client" [(ngModel)]="project.client" #client="ngModel" required>
+                <option value="{{client.id}}" *ngFor="let client of clientArr">{{client.name}}</option>
+            </select>
+            <a (click)="newClient()" class="btn btn-secondary py-0 my-0 float-end">New Client?</a>
+        </div>
+        <div class="form-group">
+            <label for="budget">Budget</label>
+            <input type="number" class="form-control" id="budget" [(ngModel)]="project.budget" #budget="ngModel" required name="budget" min="0">
+        </div>
+        <div>
+            <label for="employees">Employees:</label>
+            <div *ngIf="!employeeFields[0]">
+                <span class="text-muted">assign employees to this project</span>
+            </div>
+            <div class="form-group d-flex" *ngIf="employeeFields[0]">
+                <select name="employee1" id="employee1" [(ngModel)]="project.employees[0]" #employee1="ngModel" required>
+                    <option value="{{employee.id}}" *ngFor="let employee of employeeArr">{{employee.name}}</option>
+                </select>
+                <!-- <input type="string" class="form-control" id="employee1" [(ngModel)]="project.employees[0]" #employee1="ngModel" required name="employee1"> -->
+                <a *ngIf="!employeeFields[1] && employeeFields[0]" (click)="removeEmployeeField(0)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <div class="form-group d-flex" *ngIf="employeeFields[1]">
+                <!-- <input type="string" class="form-control" id="employee2" [(ngModel)]="project.employees[1]" #employee2="ngModel" required name="employee2"> -->
+                <select name="employee2" id="employee2" [(ngModel)]="project.employees[1]" #employee2="ngModel" required>
+                    <option value="{{employee.id}}" *ngFor="let employee of employeeArr">{{employee.name}}</option>
+                </select>
+                <a *ngIf="!employeeFields[2] && employeeFields[1]" (click)="removeEmployeeField(1)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <div class="form-group d-flex" *ngIf="employeeFields[2]">
+                <!-- <input type="string" class="form-control" id="employee3" [(ngModel)]="project.employees[2]" #employee3="ngModel" required name="employee3"> -->
+                <select name="employee3" id="employee3" [(ngModel)]="project.employees[2]" #employee3="ngModel" required>
+                    <option value="{{employee.id}}" *ngFor="let employee of employeeArr">{{employee.name}}</option>
+                </select>
+                <a (click)="removeEmployeeField(2)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <a *ngIf="!employeeFields[2]" (click)="addAnotherEmployeeField()" class="btn btn-secondary w-100 my-2 text-light">Add Another Employee +</a>
+            <div *ngIf="employeeFields[2]">
+                <span class="text-muted">Up to 3 employees per project</span>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit" [disabled]="addProjectForm.invalid">Submit</button>
+    </form>
+</div>

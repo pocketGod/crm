@@ -1,0 +1,65 @@
+<div class="container p-3">
+    <div class="w-100 d-flex justify-content-between px-1 top-container-div">
+    <h4>Update Project</h4>
+    <a class=""><i class="fa-regular fa-circle-xmark"></i></a>
+    </div>
+    <form #updateProjectForm="ngForm" (ngSubmit)="updateProject()">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="project.title" #title="ngModel" required name="title" minlength="2">
+        </div>
+        <div class="form-group">
+            <label for="client">Client:</label>
+            <select id="client" [(ngModel)]="project.client" #client="ngModel" required name="client">
+                <option *ngFor="let clt of allClients" value="{{clt.id}}">{{clt.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="budget">Budget:</label>
+            <input type="number" class="form-control" id="budget" [(ngModel)]="project.budget" #budget="ngModel" required name="budget" min="100">
+        </div>
+        <div>
+            <label for="employees">Employees:</label>
+            <div *ngIf="!employeeFields[0]">
+                <span class="text-muted">assign employees to this project</span>
+            </div>
+            <div class="form-group d-flex" *ngIf="employeeFields[0]">
+                <select name="employee1" id="employee1" [(ngModel)]="project.employees[0]" #employee1="ngModel" required>
+                    <option value="{{employee.id}}" *ngFor="let employee of allEmployees">{{employee.name}}</option>
+                </select>
+                <a *ngIf="!employeeFields[1] && employeeFields[0]" (click)="removeEmployeeField(0)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <div class="form-group d-flex" *ngIf="employeeFields[1]">
+                <select name="employee2" id="employee2" [(ngModel)]="project.employees[1]" #employee2="ngModel" required>
+                    <option value="{{employee.id}}" *ngFor="let employee of allEmployees">{{employee.name}}</option>
+                </select>
+                <a *ngIf="!employeeFields[2] && employeeFields[1]" (click)="removeEmployeeField(1)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <div class="form-group d-flex" *ngIf="employeeFields[2]">
+                <select name="employee3" id="employee3" [(ngModel)]="project.employees[2]" #employee3="ngModel" required>
+                    <option value="{{employee.id}}" *ngFor="let employee of allEmployees">{{employee.name}}</option>
+                </select>
+                <a (click)="removeEmployeeField(2)" class="btn btn-danger m-1 deletePhoneBtn"><i class="fa-solid fa-circle-xmark"></i></a>
+            </div>
+            <a *ngIf="!employeeFields[2]" (click)="addAnotherEmployeeField()" class="btn btn-secondary w-100 my-2 text-light">Add Another Employee +</a>
+            <div *ngIf="employeeFields[2]">
+                <span class="text-muted">Up to 3 employees per project</span>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select id="status" [(ngModel)]="project.status" #status="ngModel" required name="status" [ngClass]="{'pitch-status':project.status=='pitch', 'pre-status':project.status=='pre', 'post-status':project.status=='post', 'done-status':project.status=='done'}">
+                    <option style="background-color: red;" value="{{'pitch'}}">Pitch</option>
+                    <option style="background-color: orange;" value="{{'pre'}}">Pre</option>
+                    <option style="background-color: yellow;" value="{{'post'}}">Post</option>
+                    <option style="background-color: green;" value="{{'done'}}">Done</option>
+                </select>
+            </div>
+
+        </div>
+        <button class="btn btn-primary mt-3" type="submit" [disabled]="updateProjectForm.invalid">Submit</button>
+    </form>
+</div>
+<!-- 
+<div [ngStyle]="{'background-color':prj.status=='pitch'?'red':(prj.status=='pre'?'orange':(prj.status=='post'?'yellow':'green'))}" class="px-4 py-2">
+    {{prj.status}}
+</div> -->

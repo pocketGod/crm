@@ -1,0 +1,59 @@
+<div class="main-container">
+  <div class="text-center">
+    <h1 class="display-1 fs-1">Projects</h1>
+    <div class="w-100 d-flex justify-content-center my-4">
+      <button (click)="openModal()" class="btn btn-secondary">Add New Project</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card col-12 border-0 bg-transparent">
+      <div class="card-body w-100 row">
+        <div class="col-12 col-md-2">
+          <p class="display-6 fs-6 fw-bold">Title</p>
+        </div>
+        <div class="col-12 col-md-2">
+          <p class="display-6 fs-6 fw-bold">Client</p>
+        </div>
+        <div class="col-12 col-md-2">
+          <p class="display-6 fs-6 fw-bold">Employees</p>
+        </div>
+        <div class="col-12 col-md-2 d-flex justify-items-center align-items-center">
+          <p class="display-6 fs-6 fw-bold">Budget</p>
+        </div>
+        <div class="col-12 col-md-2">
+          <div class="px-4 py-2 fw-bold">Status</div>
+        </div>
+        <div class="col-12 col-md-2"></div>
+      </div>
+  </div>
+      <div *ngFor="let prj of projects" class="card col-12">
+          <div class="card-body w-100 row">
+            <div class="col-12 col-md-2">
+              <p class="display-6 fs-6 fw-bold">{{prj.title}}</p>
+            </div>
+            <div *ngIf="getContact(prj.client)" class="col-12 col-md-2">
+              <p class="display-6 fs-6">{{getContact(prj.client).name}}</p>
+            </div>
+            <div class="col-12 col-md-2">
+              <ul *ngIf="getContact(prj.employees[0]); else neEmployees">
+                  <li *ngFor="let emp of prj.employees">{{getContact(emp).name}}</li>
+              </ul>
+              <ng-template #neEmployees>
+                  <span class="text-muted">No Employees Assaigned Yet</span>
+              </ng-template>
+            </div>
+            <div class="col-12 col-md-2 d-flex justify-items-center align-items-center">
+              <p class="display-6 fs-6">{{prj.budget | currency}}</p>
+            </div>
+            <div class="col-12 col-md-2">
+              <div [ngClass]="{'pitch-status':prj.status=='pitch', 'pre-status':prj.status=='pre', 'post-status':prj.status=='post', 'done-status':prj.status=='done'}" class="px-4 py-2">
+                  {{prj.status}}
+              </div>
+            </div>
+            <div class="col-12 col-md-2 d-flex justify-content-center align-content-center">
+              <a (click)="openProjectEditor(prj)"><i class="fa-solid fa-pencil mt-3"></i></a>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

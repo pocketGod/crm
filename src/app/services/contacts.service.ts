@@ -11,7 +11,7 @@ export class ContactsService {
   contacts: Contact[] = []
 
 
-  contactRed = collection(this.fireStore, 'contacts')
+  contactRef = collection(this.fireStore, 'contacts')
   
   constructor(private fireStore:Firestore) { 
     this.getAllContacts().subscribe((data)=>{
@@ -20,7 +20,7 @@ export class ContactsService {
   }
 
   getAllContacts(): Observable<Contact[]>{
-    return collectionData(this.contactRed, {idField: 'id'}) as Observable<Contact[]>
+    return collectionData(this.contactRef, {idField: 'id'}) as Observable<Contact[]>
   }
 
   getContactByID(ID: string): Observable<Contact>{
@@ -29,7 +29,7 @@ export class ContactsService {
   }
 
   addContact(contact: Contact) : Promise<DocumentReference<Contact>> {
-    return addDoc(this.contactRed, contact) as Promise<DocumentReference<Contact>>
+    return addDoc(this.contactRef, contact) as Promise<DocumentReference<Contact>>
   }
 
   updateContact(contact: Contact, ID:string):Promise<void>{

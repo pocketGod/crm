@@ -1,0 +1,20 @@
+.main-container{
+    min-height: 74.5vh;
+}
+
+.pitch-status{
+    background-color: red;
+}
+.pre-status{
+    background-color: orange;
+}
+.post-status{
+    background-color: yellow;
+}
+.done-status{
+    background-color: green;
+}
+
+.pitch-status, .pre-status, .post-status,.done-status{
+    border-radius: 5px;
+}

@@ -23,6 +23,9 @@ import { ShowContactComponent } from './components/show-contact/show-contact.com
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { IsEmployeePipe } from './pipes/is-employee.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AddProjectComponent } from './components/add-project/add-project.component';
+import { EditProjectComponent } from './components/edit-project/edit-project.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     ShowContactComponent,
     AddContactComponent,
     IsEmployeePipe,
-    ProfileComponent
+    ProfileComponent,
+    ProjectsComponent,
+    AddProjectComponent,
+    EditProjectComponent
   ],
   imports: [
     BrowserModule,

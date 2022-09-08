@@ -18,6 +18,11 @@
                 </a>
               </li>
               <li>
+                <a [routerLink]="['projects']" [routerLinkActive]="['active']" class="nav-link link-dark">
+                  <i class="fa-solid fa-diagram-project"></i> Projects 
+                </a>
+              </li>
+              <li>
                 <a [routerLink]="['orders']" [routerLinkActive]="['active']" class="nav-link link-dark">
                   <i class="fa-regular fa-credit-card"></i> Orders 
                 </a>
@@ -53,6 +58,11 @@
             <i class="fa-regular fa-id-card"></i> Employee Contacts
           </a>
         </div>
+        <div class="col">
+          <a [routerLink]="['projects']" [routerLinkActive]="['mobile-nav-item-active']" class="mobile-nav-item nav-link link-dark">
+            <i class="fa-solid fa-diagram-project"></i> Projects 
+          </a>
+        </div> 
         <div class="col">
           <a [routerLink]="['orders']" [routerLinkActive]="['mobile-nav-item-active']" class="mobile-nav-item nav-link link-dark">
             <i class="fa-regular fa-credit-card"></i> Orders 
