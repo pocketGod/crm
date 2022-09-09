@@ -14,7 +14,7 @@
             <select name="client" id="client" [(ngModel)]="project.client" #client="ngModel" required>
                 <option value="{{client.id}}" *ngFor="let client of clientArr">{{client.name}}</option>
             </select>
-            <a (click)="newClient()" class="btn btn-secondary py-0 my-0 float-end">New Client?</a>
+            <a (click)="newClient()" class="btn btn-secondary py-0 my-0 float-end">New Customer?</a>
         </div>
         <div class="form-group">
             <label for="budget">Budget</label>
@@ -51,6 +51,6 @@
                 <span class="text-muted">Up to 3 employees per project</span>
             </div>
         </div>
-        <button class="btn btn-primary mt-3" type="submit" [disabled]="addProjectForm.invalid">Submit</button>
+        <button class="btn btn-primary my-3 float-end submit-btn" type="submit" [disabled]="addProjectForm.invalid">Submit</button>
     </form>
 </div>

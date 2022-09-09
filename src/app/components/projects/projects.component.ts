@@ -17,6 +17,7 @@ export class ProjectsComponent implements OnInit {
   projects: Project[] = []
   contacts: Contact[] = []
 
+  projName=''
   constructor(private ps:ProjectsService, private modal:NgbModal, private cs:ContactsService) { }
 
   ngOnInit(): void {

@@ -4,3 +4,10 @@ label{
 .x-mark-btn{
     cursor: pointer;
 }
+select{
+    min-height: 40px;
+}
+.submit-btn{
+    background-color: #1AB899;
+    border: none;
+}

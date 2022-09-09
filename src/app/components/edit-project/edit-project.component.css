@@ -1,3 +1,14 @@
+label{
+    display: block;
+}
+.x-mark-btn{
+    cursor: pointer;
+    color: black;
+}
+select{
+    min-height: 40px;
+}
+
 .deleteEmployeeBtn{
     border-radius: 100%;
     width: 40px;
@@ -9,15 +20,33 @@
 .deleteEmployeeBtn > *{
     font-size: 150%;
 }
+.main-container{
+    min-height: 74.5vh;
+}
+
 .pitch-status{
-    background-color: red;
+    background-color: #DB3B21;
+    color: white;
 }
 .pre-status{
-    background-color: orange;
+    background-color: #FC9403;
 }
 .post-status{
-    background-color: yellow;
+    color: white;
+    background-color: #1F78D1;
 }
 .done-status{
-    background-color: green;
+    color: white;
+    background-color: #12753A;
+}
+
+.pitch-status, .pre-status, .post-status,.done-status{
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.submit-btn{
+    background-color: #1AB899;
+    border: none;
 }

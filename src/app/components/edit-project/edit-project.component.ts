@@ -63,4 +63,8 @@ export class EditProjectComponent implements OnInit {
     return res as unknown as Contact
   }
 
+  colseModal(){
+    this.activeModal.close()
+  }
+
 }

@@ -6,3 +6,8 @@
     min-height: 200px;
 }
 
+.site-logo{
+    width: 150px;
+    filter: hue-rotate(200deg);
+    display: block;
+}

@@ -26,6 +26,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AddProjectComponent } from './components/add-project/add-project.component';
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
+import { PnfComponent } from './components/pnf/pnf.component';
+import { ProjectFilterPipe } from './pipes/project-filter.pipe';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, AccumulationChartModule, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService } from '@syncfusion/ej2-angular-charts';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +51,10 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
     ProfileComponent,
     ProjectsComponent,
     AddProjectComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    PnfComponent,
+    ProjectFilterPipe,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +63,11 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    NgbModule
+    NgbModule,
+    ChartModule,
+    AccumulationChartModule
   ],
-  providers: [],
+  providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

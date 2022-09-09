@@ -10,3 +10,6 @@ body{
     width: 100vw;
     height: 100vh;
 }
+#js-licensing{
+    display: none !important;
+}

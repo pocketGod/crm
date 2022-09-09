@@ -1,7 +1,7 @@
 <div class="container p-3">
     <div class="w-100 d-flex justify-content-between px-1 top-container-div">
     <h4>Update Project</h4>
-    <a class=""><i class="fa-regular fa-circle-xmark"></i></a>
+    <a (click)="colseModal()" class="x-mark-btn"><i class="fa-regular fa-circle-xmark"></i></a>
     </div>
     <form #updateProjectForm="ngForm" (ngSubmit)="updateProject()">
         <div class="form-group">
@@ -48,15 +48,15 @@
             <div class="form-group">
                 <label for="status">Status:</label>
                 <select id="status" [(ngModel)]="project.status" #status="ngModel" required name="status" [ngClass]="{'pitch-status':project.status=='pitch', 'pre-status':project.status=='pre', 'post-status':project.status=='post', 'done-status':project.status=='done'}">
-                    <option style="background-color: red;" value="{{'pitch'}}">Pitch</option>
-                    <option style="background-color: orange;" value="{{'pre'}}">Pre</option>
-                    <option style="background-color: yellow;" value="{{'post'}}">Post</option>
-                    <option style="background-color: green;" value="{{'done'}}">Done</option>
+                    <option class="pitch-status" value="{{'pitch'}}">Pitch</option>
+                    <option class="pre-status" value="{{'pre'}}">Pre</option>
+                    <option class="post-status" value="{{'post'}}">Post</option>
+                    <option  class="done-status" value="{{'done'}}">Done</option>
                 </select>
             </div>
 
         </div>
-        <button class="btn btn-primary mt-3" type="submit" [disabled]="updateProjectForm.invalid">Submit</button>
+        <button class="btn btn-primary my-3 float-end submit-btn" type="submit" [disabled]="updateProjectForm.invalid">Submit</button>
     </form>
 </div>
 <!-- 

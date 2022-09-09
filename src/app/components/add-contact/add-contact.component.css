@@ -27,3 +27,7 @@ input{
     border-left: 5px solid #5C636A;
     border-right: 5px solid #5C636A;
 }
+.submit-btn{
+    background-color: #1AB899;
+    border: none;
+}

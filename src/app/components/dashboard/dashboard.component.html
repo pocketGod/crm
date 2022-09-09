@@ -1,0 +1,18 @@
+<div class="main-container"> 
+    <div class="w-50">
+        <ejs-chart [title]="'Projects Budget'" [primaryXAxis]="budget.xAxis" [primaryYAxis]="budget.yAxis" [legendSettings]="budget.legend" [tooltip]="budget.tooltip">
+            <e-series-collection>
+                <e-series type="Line" [dataSource]="projects" [marker]="budget.marker" xName="title" yName="budget" ></e-series>
+            </e-series-collection>
+        </ejs-chart>
+    </div>
+    <div>
+        <ejs-accumulationchart [title]="'Projects Status'" [legendSettings]="status.legend" [tooltip]="status.tooltip">
+            <e-accumulation-series-collection>
+                <e-accumulation-series type="Pie" [dataSource]="status.labels" [dataLabel]="status.label" xName="status" yName="amount">
+
+                </e-accumulation-series>
+            </e-accumulation-series-collection>
+        </ejs-accumulationchart>
+    </div>
+</div>

@@ -3,18 +3,54 @@
 }
 
 .pitch-status{
-    background-color: red;
+    background-color: #DB3B21;
+    color: white;
 }
 .pre-status{
-    background-color: orange;
+    background-color: #FC9403;
 }
 .post-status{
-    background-color: yellow;
+    color: white;
+    background-color: #1F78D1;
 }
 .done-status{
-    background-color: green;
+    color: white;
+    background-color: #12753A;
 }
 
 .pitch-status, .pre-status, .post-status,.done-status{
+    text-align: center;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+
+.bg-pitch{
+    background-color: #db3a2127;
+}
+.bg-pre{
+    background-color: #FC940327;
+}
+.bg-post{
+    background-color: #1F78D127;
+}
+.bg-done{
+    background-color: #12753A27;
+}
+
+.project-editor-icon{
+    transition: transform 0.5s, color 0.5s;
+    cursor: pointer;
+}
+.project-editor-icon:hover{
+    transform: rotate(90deg) scale(1.3);
+    color: #1ABB9C;
+}
+
+
+@media only screen and (max-width: 767px){
+    .desktop-table-context{
+        display: none;
+        visibility: hidden;
+    }
 }

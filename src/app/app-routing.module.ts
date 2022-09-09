@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { PnfComponent } from './components/pnf/pnf.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -15,17 +17,20 @@ import { PreventDoubleSignInGuard } from './guards/prevent-double-sign-in.guard'
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'home/login'},
   {path:'explore', component:NavbarComponent, canActivate:[AuthGuard], children:[
-    {path:'', pathMatch:'full', redirectTo:'explore/table'},
+    {path:'', pathMatch:'full', redirectTo:'explore/dashboard'},
+    {path:'dashboard', component:DashboardComponent},
     {path:'contacts', component:ContactsComponent},
     {path:'table', component:SearchComponent},
     {path:'orders', component:OrdersComponent},
     {path:'profile', component:ProfileComponent},
-    {path:'projects', component:ProjectsComponent}
+    {path:'projects', component:ProjectsComponent},
+    {path:'**', component:PnfComponent}
   ]},
   {path:'home', component:HomeComponent, canActivate:[PreventDoubleSignInGuard], children:[
     {path:'login', component:LoginComponent},
     {path:'register', component:RegisterComponent}
-  ]}
+  ]},
+  {path:'**', component:PnfComponent}
 
 ];
 
