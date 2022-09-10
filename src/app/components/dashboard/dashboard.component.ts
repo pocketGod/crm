@@ -31,10 +31,13 @@ export class DashboardComponent implements OnInit {
       dataLabel: {visible:true}
     },
     tooltip: {
-      enable:true
+      enable:true,
+      format: '<b>${point.x}: ${point.y}$</b>'
     }
   }
+  
   status:any = {
+    projectCount:0,
     labels: [],
     label:{
       visible:true,
@@ -49,7 +52,24 @@ export class DashboardComponent implements OnInit {
     },
     tooltip:{
       enable:true,
-      format: '${point.x} : <b>${point.y}</b>'
+      format: '<b>${point.y} projects under status : ${point.x}</b>'
+    },
+    colorMap: 'color'
+  }
+
+  assignedEmployees:any = {
+    data: [],
+    xAxis : {
+      valueType: 'Category',
+      title: 'Project Title'
+    },
+    yAxis : {
+      title: 'Employee Count'
+    },
+    unmannedProjects:0,
+    tooltip:{
+      enable:true,
+      format: '<b>${point.y}</b> employees assigned to <b>${point.x}</b>'
     }
   }
 
@@ -59,12 +79,18 @@ export class DashboardComponent implements OnInit {
     this.ps.getAllProjects().subscribe((data)=>{
       this.projects = data
       let statusArr = [
-        {status:'Pitch', amount:0},
-        {status:'Pre', amount:0},
-        {status:'Post', amount:0},
-        {status:'Done', amount:0}
+        {status:'Pitch', amount:0, color:'#DB3B21'},
+        {status:'Pre', amount:0, color:'#FC9403'},
+        {status:'Post', amount:0, color:'#1F78D1'},
+        {status:'Done', amount:0, color:'#12753A'}
       ]
+      let assignedEmployeesArr:{title:string,empCount:number}[] = []
       data.forEach((prj)=>{
+        assignedEmployeesArr.push({title:prj.title, empCount:prj.employees.length})
+        this.status.projectCount++
+
+        if(!prj.employees.length) this.assignedEmployees.unmannedProjects++
+
         switch (prj.status) {
           case 'pitch':
             statusArr[0].amount++
@@ -78,10 +104,11 @@ export class DashboardComponent implements OnInit {
           case 'done':
             statusArr[3].amount++
             break;
-      
         }
-      })
+    })
       this.status.labels = statusArr
+      this.assignedEmployees.data = assignedEmployeesArr
+      
     })
 
     this.cs.getAllContacts().subscribe((data)=>{

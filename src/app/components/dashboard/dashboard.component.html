@@ -1,18 +1,45 @@
-<div class="main-container"> 
-    <div class="w-50">
-        <ejs-chart [title]="'Projects Budget'" [primaryXAxis]="budget.xAxis" [primaryYAxis]="budget.yAxis" [legendSettings]="budget.legend" [tooltip]="budget.tooltip">
-            <e-series-collection>
-                <e-series type="Line" [dataSource]="projects" [marker]="budget.marker" xName="title" yName="budget" ></e-series>
-            </e-series-collection>
-        </ejs-chart>
-    </div>
-    <div>
-        <ejs-accumulationchart [title]="'Projects Status'" [legendSettings]="status.legend" [tooltip]="status.tooltip">
-            <e-accumulation-series-collection>
-                <e-accumulation-series type="Pie" [dataSource]="status.labels" [dataLabel]="status.label" xName="status" yName="amount">
+<div class="main-container ps-sm-5"> 
+    <h1 class="display-4 fs-1 text-center pt-2 pb-4 pe-sm-5 me-sm-5">DashBoard</h1>
+    <div class="row gap-1 gap-sm-5 ms-sm-5 mb-5">
 
-                </e-accumulation-series>
-            </e-accumulation-series-collection>
-        </ejs-accumulationchart>
+        <div class="col-sm-5 col-12 card">
+            <ejs-chart id="chart-container" [primaryXAxis]='assignedEmployees.xAxis' [primaryYAxis]='assignedEmployees.yAxis' [title]='"Employees Assigned Per Each Project"' [tooltip]="assignedEmployees.tooltip">
+                <e-series-collection>
+                    <e-series [dataSource]='assignedEmployees.data' type='Column' xName='title' yName='empCount'></e-series>
+                </e-series-collection>
+            </ejs-chart>
+            <ng-container *ngIf="assignedEmployees.unmannedProjects!=0">
+                <h6 class="text-center text-danger fw-bolder">
+                    Please Note The 
+                    {{assignedEmployees.unmannedProjects}} 
+                    Ptoject<span *ngIf="assignedEmployees.unmannedProjects!=1">s</span> with no employees assigned <span *ngIf="assignedEmployees.unmannedProjects==1; else ploral">to it</span>
+                    <ng-template #ploral>to them</ng-template>
+                </h6>
+            </ng-container>
+        </div>
+
+        <div class="col-sm-5 col-12 card">
+            <ejs-accumulationchart [title]="'Projects Status'" [legendSettings]="status.legend" [tooltip]="status.tooltip">
+                <e-accumulation-series-collection>
+                    <e-accumulation-series type="Pie" [dataSource]="status.labels" [dataLabel]="status.label" xName="status" yName="amount" innerRadius="40%" [pointColorMapping]="status.colorMap">
+    
+                    </e-accumulation-series>
+                </e-accumulation-series-collection>
+            </ejs-accumulationchart>
+            <h6 class="text-center">{{status.projectCount}} Projects in Total</h6>
+        </div>
+
+        <div class="col-sm-5 col-12 card">
+            <ejs-chart [title]="'Budgets'" [primaryXAxis]="budget.xAxis" [primaryYAxis]="budget.yAxis" [legendSettings]="budget.legend" [tooltip]="budget.tooltip">
+                <e-series-collection>
+                    <e-series type="Line" [dataSource]="projects" [marker]="budget.marker" xName="title" yName="budget" ></e-series>
+                </e-series-collection>
+            </ejs-chart>
+        </div>
+
+        <div class="col-sm-5 col-12 card">
+            
+        </div>
+
     </div>
 </div>

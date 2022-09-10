@@ -29,7 +29,7 @@ import { EditProjectComponent } from './components/edit-project/edit-project.com
 import { PnfComponent } from './components/pnf/pnf.component';
 import { ProjectFilterPipe } from './pipes/project-filter.pipe';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, AccumulationChartModule, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService } from '@syncfusion/ej2-angular-charts';
+import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, AccumulationChartModule, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService } from '@syncfusion/ej2-angular-charts';
 
 
 @NgModule({
@@ -67,7 +67,7 @@ import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLab
     ChartModule,
     AccumulationChartModule
   ],
-  providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService],
+  providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService, PieSeriesService, AccumulationDataLabelService, AccumulationLegendService, AccumulationTooltipService, ColumnSeriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
