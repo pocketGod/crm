@@ -56,8 +56,10 @@
             </div>
 
         </div>
-        <button class="btn btn-primary my-3 float-end submit-btn" type="submit" [disabled]="updateProjectForm.invalid">Submit</button>
-        <a (click)="deleteProject()" class="btn">Delete Project</a>
+        <div class="float-end d-flex flex-column">
+            <a (click)="deleteProject()" class="btn btn-danger">Delete Project</a>
+            <button class="btn btn-primary my-3 submit-btn" type="submit" [disabled]="updateProjectForm.invalid">Submit Changes</button>
+        </div>
     </form>
 </div>
 <!-- 

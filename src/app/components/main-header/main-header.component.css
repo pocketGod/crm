@@ -7,7 +7,7 @@
 }
 
 .site-logo{
-    width: 150px;
-    filter: hue-rotate(200deg);
+    width: 300px;
+    /* filter: hue-rotate(200deg); */
     display: block;
 }

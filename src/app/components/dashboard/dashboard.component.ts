@@ -79,10 +79,10 @@ export class DashboardComponent implements OnInit {
     this.ps.getAllProjects().subscribe((data)=>{
       this.projects = data
       let statusArr = [
-        {status:'Pitch', amount:0, color:'#DB3B21'},
-        {status:'Pre', amount:0, color:'#FC9403'},
-        {status:'Post', amount:0, color:'#1F78D1'},
-        {status:'Done', amount:0, color:'#12753A'}
+        {status:'Pitch', amount:0, color:'#327064'},
+        {status:'Pre', amount:0, color:'#49A391'},
+        {status:'Post', amount:0, color:'#1ABC9C'},
+        {status:'Done', amount:0, color:'#B4F0E4'}
       ]
       let assignedEmployeesArr:{title:string,empCount:number}[] = []
       data.forEach((prj)=>{
