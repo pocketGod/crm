@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Contact } from 'src/app/interfaces/Contact';
 import { ContactsService } from 'src/app/services/contacts.service'
 import { AddContactComponent } from '../add-contact/add-contact.component';
+import { EditContactComponent } from '../edit-contact/edit-contact.component';
 import { ShowContactComponent } from '../show-contact/show-contact.component';
 
 @Component({
@@ -64,5 +65,14 @@ export class ContactsComponent implements OnInit {
     modalRef.componentInstance.contactID = contact.id
   }
 
+  updateContact(contact:Contact): void{
+    let modalRef = this.modal.open(EditContactComponent, {
+      size: 'lg',
+      centered: true,
+      windowClass: 'dark-modal',
+      keyboard: true
+    })
+    modalRef.componentInstance.contactID = contact.id
+  }
 
 }

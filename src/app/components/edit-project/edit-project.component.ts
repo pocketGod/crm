@@ -54,6 +54,12 @@ export class EditProjectComponent implements OnInit {
     }).catch((err)=> console.log(err))
   }
 
+  deleteProject(){
+    if(confirm(`Delete Project ${this.project.title}?`)){
+      this.project.id = this.porjID
+      this.ps.deleteProject(this.project)
+    }
+  }
   
   getContact(ID:string): Contact{
     let res

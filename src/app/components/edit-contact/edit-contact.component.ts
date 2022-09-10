@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Contact } from 'src/app/interfaces/Contact';
 import { ContactsService } from 'src/app/services/contacts.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectsService } from 'src/app/services/projects.service';
+import { Project } from 'src/app/interfaces/Project';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class EditContactComponent implements OnInit {
   phoneFieldAmount:number = 0
   contactName: string[] = ['','']
 
-  constructor(private cs:ContactsService, private activeModal:NgbActiveModal) { }
+  constructor(private cs:ContactsService, private activeModal:NgbActiveModal, private ps:ProjectsService) { }
 
   ngOnInit(): void {
     if (this.contactID) {
@@ -44,6 +46,30 @@ export class EditContactComponent implements OnInit {
       this.activeModal.close()
       alert('contact was edited')
     }).catch((err)=> console.log(err))
+  }
+
+  deleteContact(){
+    if (confirm(`Are you sure you would like to delete "${this.contactName[0]} ${this.contactName[1]}"?`)) {
+      this.contact.id = this.contactID
+      this.cs.deleteContact(this.contact)
+      let unModifiedProjects: Project[] = []
+
+      this.activeModal.close()
+
+      this.ps.getAllProjects().subscribe((data)=>{
+        data.forEach((prj)=>{
+          if(prj.employees.includes(this.contact.id as string)) unModifiedProjects.push(prj)
+          
+          if(prj.client == this.contact.id as string) this.ps.deleteProject(prj)
+        })
+      })
+
+      unModifiedProjects.forEach((prj)=>{
+        let index = prj.employees.indexOf(this.contact.id as string)
+        prj.employees.splice(index,1)
+        this.ps.updateProject(prj)
+      })
+    }
   }
 
   

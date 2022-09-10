@@ -12,3 +12,6 @@
 .contactsContainer{
     min-height: 74.5vh;
 }
+.edit-btn{
+    z-index: 5;
+}

@@ -25,11 +25,11 @@
     <div class="">
       <div *ngIf="contacts | filter:'firstName':contactFirstName | filter:'lastName':contactLastName | filter:'phone':contactPhone | isEmployee:true as contacts" class="row px-4">
         <ng-container *ngIf="contacts.length!=0; else noContactsFound">
-          <div class="card text-center col-12 col-sm-4 px-0 my-2 contact-card" (click)="showContact(contact)"  *ngFor="let contact of contacts">
-            <div class="card-header display-6">
+          <div class="card text-center col-12 col-sm-4 px-0 my-2 contact-card" *ngFor="let contact of contacts">
+            <div (click)="showContact(contact)" class="card-header display-6">
               {{contact.name}}
             </div>
-            <div class="card-body">
+            <div (click)="showContact(contact)" class="card-body">
               <h5 class="card-title">{{contact.email}}</h5>
               <div *ngIf="contact.phones.length; else noPhones">
                 <!-- <p class="card-text" *ngFor="let phone of contact.phones">
@@ -47,8 +47,14 @@
               </ng-template>
             </div>
             <div class="card-footer text-muted">
-              <i class="fa-solid fa-cake-candles me-2"></i>
-              {{getBirthday(contact.birthday)}}
+              <div (click)="showContact(contact)">
+                <i class="fa-solid fa-cake-candles me-2"></i>
+                {{getBirthday(contact.birthday)}}
+                <hr>
+              </div>
+              <div class="p-0 m-0" (click)="updateContact(contact)">
+                <a class="edit-btn btn w-100 h-100">update</a>
+              </div>
             </div>
           </div>
         </ng-container>

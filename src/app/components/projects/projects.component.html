@@ -5,11 +5,15 @@
   <div class="row">
     <div class="col-12 card border-0 bg-transparent">
       <div class="row p-3 mx-md-5">
-        <div class="form-floating col-9">
+        <div class="form-floating col-4">
           <input placeholder="." id="projectTitleInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="projName">
           <label for="projectTitleInput" class="ms-3">Project Title</label>
         </div>
-        <div class="col-3 d-flex align-items-center">
+        <div class="form-floating col-4">
+          <input placeholder="." id="projectClientInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="clientName">
+          <label for="projectClientInput" class="ms-3">Client Name</label>
+        </div>
+        <div class="col-4 d-flex align-items-center">
           <span class="vr me-4"></span>
           <button (click)="openModal()" class="btn btn-secondary">Add New Project</button>
         </div>
@@ -35,22 +39,22 @@
         <div class="col-12 col-md-2"></div>
       </div>
   </div>
-      <ng-container *ngIf="projects | projectFilter:'title':projName as projects">
+      <ng-container *ngIf="sortBy('status') | projectFilter:'title':projName:contacts |projectFilter:'client':clientName:contacts as projects">
         <div *ngFor="let prj of projects" class="card col-12 mt-2" [ngClass]="{'bg-pitch':prj.status=='pitch','bg-pre':prj.status=='pre','bg-post':prj.status=='post','bg-done':prj.status=='done'}">
           <!-- <ng-container *ngIf="prj.status!='done'"> -->
             <div class="card-body w-100 row">
               <div class="col-12 col-md-2">
-                <p class="display-6 fs-6 fw-bold">{{prj.title}}</p>
+                <p class="display-6 fs-6 fw-bolder">{{prj.title}}</p>
               </div>
               <div *ngIf="getContact(prj.client)" class="col-12 col-md-2">
-                <p class="display-6 fs-6">{{getContact(prj.client).name}}</p>
+                <p class="display-6 fs-6 fw-semibold">{{getContact(prj.client).name}}</p>
               </div>
               <div class="col-12 col-md-2">
                 <ul *ngIf="getContact(prj.employees[0]); else neEmployees">
                     <li *ngFor="let emp of prj.employees">{{getContact(emp).name}}</li>
                 </ul>
                 <ng-template #neEmployees>
-                    <span class="text-muted">No Employees Assaigned Yet</span>
+                    <span class="text-danger">No Employees Assaigned Yet</span>
                 </ng-template>
               </div>
               <div class="col-12 col-md-2 d-flex justify-items-center align-items-center">

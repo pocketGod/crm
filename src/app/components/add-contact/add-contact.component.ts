@@ -36,11 +36,11 @@ export class AddContactComponent implements OnInit {
 
     this.contact.birthday = new Date(this.contact.birthday)
     this.contact.name = this.name.first + ' ' + this.name.last
-    console.log(this.contact);
+    // console.log(this.contact);
     
     this.cs.addContact(this.contact).then(()=>{
-      this.modal.dismissAll()
-      console.log(this.contact)
+      this.activeModal.close()
+      // console.log(this.contact)
       // alert('Customer Was Added Successfully')
     }).catch((err)=> console.log(err))
   }

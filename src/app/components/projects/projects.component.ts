@@ -16,7 +16,7 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[] = []
   contacts: Contact[] = []
-
+  clientName=''
   projName=''
   constructor(private ps:ProjectsService, private modal:NgbModal, private cs:ContactsService) { }
 
@@ -28,6 +28,10 @@ export class ProjectsComponent implements OnInit {
     this.cs.getAllContacts().subscribe((data)=>{
       this.contacts = data
     })
+  }
+
+  sortBy(prop:string):Project[]{
+    return this.projects.sort((a:any, b:any) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1)
   }
 
   openModal():void{
