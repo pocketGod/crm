@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
       this.auth.setLocalData('loggedIn', 'true')
       this.auth.setOrGetUserPic('../../../assets/general_user_pic.png', 'set')
       this.auth.setLocalData('pic', '../../../assets/general_user_pic.png' as string)
-      this.router.navigateByUrl('explore/table')
+      this.router.navigateByUrl('explore/dashboard')
     }).catch((err)=>{
       console.log(err)
       alert('Something went wrong...')
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       this.auth.setLocalData('loggedIn', 'true')
       this.auth.setOrGetUserPic(data.user.photoURL as string,'set')
       this.auth.setLocalData('pic', data.user['photoURL'] as string)
-      this.router.navigateByUrl('explore/table')
+      this.router.navigateByUrl('explore/dashboard')
     }).catch((err)=>{
       console.log(err)
       alert('Couldnt Connect To Google Account')

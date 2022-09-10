@@ -47,6 +47,12 @@
     color: #1ABB9C;
 }
 
+#projects-content-container{
+    height: 59vh;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
 
 @media only screen and (max-width: 767px){
     .desktop-table-context{

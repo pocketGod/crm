@@ -16,7 +16,7 @@ export class PreventDoubleSignInGuard implements CanActivate {
 
       if(this.auth.getLocalData('loggedIn')=='false') return true
       else{
-        this.router.navigateByUrl('explore/table')
+        this.router.navigateByUrl('explore/dashboard')
         return false
       }
   }

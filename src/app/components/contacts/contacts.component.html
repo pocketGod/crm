@@ -1,8 +1,8 @@
+<div>
+  <h1 class="display-6 text-center">Employee Contact Details</h1>
+</div>
 <div class="contactContainer">
   <div class="">
-    <div>
-      <h1 class="display-6 text-center">Employee Contact Details</h1>
-    </div>
     <div class="row p-3 mx-md-5">
       <div class="form-floating col-3">
         <input placeholder="." id="firstNameInput" class="form-control gentle-generic-shadow" type="text" [(ngModel)]="contactFirstName">
@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-    <div class="">
+    <div id="content-container">
       <div *ngIf="contacts | filter:'firstName':contactFirstName | filter:'lastName':contactLastName | filter:'phone':contactPhone | isEmployee:true as contacts" class="row px-4">
         <ng-container *ngIf="contacts.length!=0; else noContactsFound">
           <div class="card text-center col-12 col-sm-4 px-0 my-2 contact-card" *ngFor="let contact of contacts">
@@ -64,6 +64,7 @@
       <h1>No Contacts Found</h1>
     </ng-template>
   </div>
+
 
 
   

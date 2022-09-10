@@ -76,6 +76,9 @@ export class DashboardComponent implements OnInit {
   constructor(private ps:ProjectsService, private cs:ContactsService) { }
 
   ngOnInit(): void {
+    this.status.projectCount = 0
+    this.assignedEmployees.unmannedProjects = 0
+
     this.ps.getAllProjects().subscribe((data)=>{
       this.projects = data
       let statusArr = [
