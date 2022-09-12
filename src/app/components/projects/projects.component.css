@@ -54,6 +54,13 @@
 }
 
 
+@media only screen and (max-width: 989px){
+    #projects-content-container{
+    height: auto;
+    overflow: visible;
+    }
+}
+
 @media only screen and (max-width: 767px){
     .desktop-table-context{
         display: none;

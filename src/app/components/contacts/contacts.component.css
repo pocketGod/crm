@@ -20,3 +20,9 @@
     overflow-y: scroll;
     overflow-x: auto;
 }
+@media only screen and (max-width: 989px){
+    #content-container{
+    height: auto;
+    overflow: visible;
+    }
+}
