@@ -21,13 +21,14 @@
       </div>
 
       <!-- Repeat Password input -->
-      <!-- <div class="form-floating mb-4">
-        <input type="password" id="registerRepeatPassword" class="form-control" placeholder="."/>
-        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-      </div> -->
+      <div class="form-floating mb-4">
+        <input type="password" id="repeatRegisterPassword" #repeatPassword="ngModel" class="form-control" [(ngModel)]="confirmPassword" required name="repeatRegisterPassword" placeholder="." minlength="6" [ngClass]="{'invalid-password-input': !checkMatchingPasswords()}"/>
+        <label class="form-label" for="repeatRegisterPassword">Confirm Password</label>
+        <!-- <small class="text-danger float-start" *ngIf="!checkMatchingPasswords() && (repeatPassword?.dirty || repeatPassword?.touched)">Passwords Dont Match</small> -->
+      </div>
 
       <div class="w-100 d-flex justify-content-center">
-        <button type="submit" class="btn bg-themed mb-4 text-light" [disabled]="registerForm.invalid">Sign Up</button>
+        <button type="submit" class="btn bg-themed mb-4 text-light" [disabled]="registerForm.invalid || !checkMatchingPasswords()">Sign Up</button>
     </div>  
     </form>
 </div>

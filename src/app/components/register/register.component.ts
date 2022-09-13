@@ -13,6 +13,11 @@ export class RegisterComponent implements OnInit {
   constructor(private auth:AuthService, private router:Router) { }
 
   user:User = {email:'', password:''}
+  confirmPassword:string = ''
+
+  checkMatchingPasswords = ():boolean =>{
+    return this.confirmPassword == this.user.password
+  }
 
   ngOnInit(): void {
   }
