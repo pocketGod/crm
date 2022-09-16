@@ -117,7 +117,7 @@ export class DashboardComponent implements OnInit {
     this.cs.getAllContacts().subscribe((data)=>{
       data.forEach((contact)=>{
         if(contact.employee) this.employees.push(contact)
-        else this,this.clients.push(contact)
+        else this.clients.push(contact)
       })
     })
   }
